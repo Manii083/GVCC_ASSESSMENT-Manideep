@@ -25,30 +25,30 @@ If the answer does not exist in the document, reply:
 Do not make assumptions.
 `;
 
-      const response = await axios.post(
-        this.apiUrl,
-        {
-          model: 'grok-1',
-          messages: [
-            {
-              role: 'system',
-              content: 'You are a document assistant that answers questions strictly based on the provided document.'
-            },
-            {
-              role: 'user',
-              content: prompt
-            }
-          ],
-          temperature: 0.3,
-          max_tokens: 1000
-        },
-        {
-          headers: {
-            'Authorization': `Bearer ${this.apiKey}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
+const response = await axios.post(
+  `${this.apiUrl}/chat/completions`,
+  {
+    model: 'grok-4',
+    messages: [
+      {
+        role: 'system',
+        content: 'You are a document assistant that answers questions strictly based on the provided document.'
+      },
+      {
+        role: 'user',
+        content: prompt
+      }
+    ],
+    temperature: 0.3,
+    max_tokens: 1000
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${this.apiKey}`,
+      'Content-Type': 'application/json'
+    }
+  }
+);
 
       return response.data.choices[0].message.content.trim();
     } catch (error) {

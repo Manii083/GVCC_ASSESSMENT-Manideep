@@ -1,6 +1,6 @@
 const Document = require('../models/Document');
 const Conversation = require('../models/Conversation');
-const grokService = require('../services/grokService');
+const geminiService = require('../services/geminiService');
 const { validationResult } = require('express-validator');
 
 // @desc    Ask a question about a document
@@ -32,7 +32,7 @@ exports.askQuestion = async (req, res, next) => {
     }
 
     // Get answer from AI
-    const answer = await grokService.askQuestion(document.extractedText, question);
+    const answer = await geminiService.askQuestion(document.extractedText, question);
 
     // Save conversation
     const conversation = await Conversation.create({

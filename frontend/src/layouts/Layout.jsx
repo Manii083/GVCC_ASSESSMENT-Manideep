@@ -6,7 +6,7 @@ import {
   FiHome, 
   FiFile, 
   FiMessageSquare, 
-  FiHistory, 
+  FiClock, 
   FiLogOut, 
   FiUser,
   FiSun,
@@ -30,7 +30,7 @@ const Layout = () => {
     { name: 'Dashboard', href: '/', icon: FiHome },
     { name: 'Documents', href: '/documents', icon: FiFile },
     { name: 'Chat', href: '/chat', icon: FiMessageSquare },
-    { name: 'History', href: '/history', icon: FiHistory },
+    { name: 'History', href: '/history', icon: FiClock },
   ];
 
   const toggleMobileMenu = () => {
