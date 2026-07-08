@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getDocuments, uploadDocument, deleteDocument } from '../api/documents';
-import { FiUpload, FiSearch, FiTrash2, FiFile, FiClock, FiChevronRight } from 'react-icons/fi';
+import { FiUpload, FiSearch, FiTrash2,  FiClock, FiChevronRight } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import Loader from '../components/Loader';
 
@@ -11,9 +11,10 @@ const Documents = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
-  useEffect(() => {
-    loadDocuments();
-  }, [searchTerm]);
+useEffect(() => {
+  loadDocuments();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [searchTerm]);
 
   const loadDocuments = async () => {
     try {
@@ -47,11 +48,11 @@ const Documents = () => {
 
     setIsUploading(true);
     try {
-      const response = await uploadDocument(file);
-      toast.success('Document uploaded successfully');
+await uploadDocument(file);      toast.success('Document uploaded successfully');
       await loadDocuments();
     } catch (error) {
       console.error('Upload error:', error);
+      toast.error('Failed to upload document');
     } finally {
       setIsUploading(false);
       e.target.value = '';

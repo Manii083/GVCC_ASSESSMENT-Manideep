@@ -15,9 +15,10 @@ const History = () => {
     pages: 0,
   });
 
-  useEffect(() => {
-    loadHistory();
-  }, [pagination.page, searchTerm]);
+useEffect(() => {
+  loadHistory();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [pagination.page, searchTerm]);
 
   const loadHistory = async () => {
     try {

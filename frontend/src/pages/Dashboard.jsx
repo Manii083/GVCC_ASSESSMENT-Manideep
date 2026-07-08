@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getDashboard } from '../api/dashboard';
-import { FiFile, FiMessageSquare, FiClock, FiArrowRight } from 'react-icons/fi';
+import { FiFile, FiMessageSquare, FiArrowRight } from 'react-icons/fi';
 import Loader from '../components/Loader';
 import toast from 'react-hot-toast';
 
@@ -49,7 +49,9 @@ const Dashboard = () => {
         <div className="card animate-fade-in">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Documents</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                Total Documents
+              </p>
               <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
                 {stats?.totalDocuments || 0}
               </p>
@@ -58,6 +60,7 @@ const Dashboard = () => {
               <FiFile className="h-6 w-6 text-primary-600 dark:text-primary-400" />
             </div>
           </div>
+
           <div className="mt-4">
             <Link
               to="/documents"
@@ -69,10 +72,15 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="card animate-fade-in" style={{ animationDelay: '100ms' }}>
+        <div
+          className="card animate-fade-in"
+          style={{ animationDelay: '100ms' }}
+        >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Questions</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                Total Questions
+              </p>
               <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
                 {stats?.totalQuestions || 0}
               </p>
@@ -81,6 +89,7 @@ const Dashboard = () => {
               <FiMessageSquare className="h-6 w-6 text-green-600 dark:text-green-400" />
             </div>
           </div>
+
           <div className="mt-4">
             <Link
               to="/history"
@@ -95,10 +104,14 @@ const Dashboard = () => {
 
       {/* Recent uploads */}
       {stats?.recentUploads?.length > 0 && (
-        <div className="card animate-fade-in" style={{ animationDelay: '200ms' }}>
+        <div
+          className="card animate-fade-in"
+          style={{ animationDelay: '200ms' }}
+        >
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Recent Uploads
           </h2>
+
           <div className="space-y-3">
             {stats.recentUploads.map((doc, index) => (
               <div
@@ -107,15 +120,19 @@ const Dashboard = () => {
               >
                 <div className="flex items-center min-w-0">
                   <FiFile className="h-5 w-5 text-gray-400 dark:text-gray-500 mr-3 flex-shrink-0" />
+
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
                       {doc.fileName}
                     </p>
+
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {new Date(doc.uploadedAt).toLocaleDateString()} • {doc.fileType.toUpperCase()}
+                      {new Date(doc.uploadedAt).toLocaleDateString()} •{' '}
+                      {doc.fileType.toUpperCase()}
                     </p>
                   </div>
                 </div>
+
                 <Link
                   to={`/chat?document=${doc._id}`}
                   className="text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
@@ -130,10 +147,14 @@ const Dashboard = () => {
 
       {/* Recent conversations */}
       {stats?.recentConversations?.length > 0 && (
-        <div className="card animate-fade-in" style={{ animationDelay: '300ms' }}>
+        <div
+          className="card animate-fade-in"
+          style={{ animationDelay: '300ms' }}
+        >
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Recent Conversations
           </h2>
+
           <div className="space-y-3">
             {stats.recentConversations.map((conv, index) => (
               <div
@@ -145,11 +166,14 @@ const Dashboard = () => {
                     <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
                       {conv.question}
                     </p>
+
                     <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mt-1">
                       {conv.answer}
                     </p>
+
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      {conv.documentId?.fileName || 'Document'} • {new Date(conv.createdAt).toLocaleDateString()}
+                      {conv.documentId?.fileName || 'Document'} •{' '}
+                      {new Date(conv.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                 </div>
