@@ -1,6 +1,6 @@
 # AI-Powered Knowledge Base Assistant
 
-A full-stack web application that allows users to upload documents and ask AI-powered questions about their content. The system uses the Grok API to provide accurate, document-based responses.
+A full-stack web application that allows users to upload documents and ask AI-powered questions about their content. The system uses the Gemini API to provide accurate, document-based responses.
 
 ## Features
 
@@ -30,7 +30,7 @@ A full-stack web application that allows users to upload documents and ask AI-po
 - pdf-parse for PDF processing
 
 ### AI Integration
-- Grok API for intelligent document Q&A
+- Gemini API for intelligent document Q&A
 
 ## Architecture
 
@@ -46,7 +46,7 @@ The application follows a RESTful API architecture with a clean separation of co
 ### Prerequisites
 - Node.js (v14 or higher)
 - MongoDB (local or Atlas)
-- Grok API Key
+- Gemini API Key
 
 ### Environment Variables
 
@@ -57,8 +57,7 @@ PORT=5000
 MONGODB_URI=mongodb://localhost:27017/...
 JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRE=7d
-GROK_API_KEY=your_grok_api_key
-GROK_API_URL=https://api.grok.ai/v1/chat/completions
+GEMINI_API_KEY=abcd....
 MAX_FILE_SIZE=10485760
 RATE_LIMIT_WINDOW=15
 RATE_LIMIT_MAX=100
